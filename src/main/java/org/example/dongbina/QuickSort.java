@@ -1,7 +1,5 @@
 package org.example.dongbina;
 
-import java.awt.*;
-import java.util.Arrays;
 
 public class QuickSort {
 
@@ -16,9 +14,9 @@ public class QuickSort {
 
     private static void quickSort(int[] arr, int start, int end) {
         // start가 end보다 크거나 같다면 정렬할 원소가 1개 이하이므로 정렬하지 않고 return
-        if (start >= end)
+        if (start >= end) {
             return;
-
+        }
         // 가장 왼쪽의 값을 pivot으로 지정, 실제 비교 검사는 start+1 부터 시작
         int pivot = start;
         int lo = start + 1;
@@ -30,6 +28,8 @@ public class QuickSort {
             //시작점 에서부터 끝나는 지점 까지
             while (lo <= end && arr[lo] <= arr[pivot]) { // 피벗보다 큰 값을 만날 때까지
                 lo++;
+                System.out.println("low = "+lo+", "+"end = "+end);
+
             }
             //끝나는 지점 부터 시작점 까지
             while (hi > start && arr[hi] >= arr[pivot]) { // 피벗보다 작은 값을 만날 때까지
@@ -58,9 +58,13 @@ public class QuickSort {
         System.out.println("첫 번째 재귀함수 호출"+"arr = "+ arr+", "+"start = " + start + ", " + "end = " + (hi-1));
         System.out.println("");
         quickSort(arr, start, hi - 1);
+        // 1 2 4 5 3 6 7 "8" 9 10 예를 들어 8이 정렬이 완료 되었다고 했을 때 8을 기준으로 두 집합으로 분할된다
+        //여기선 8 을 기준으로 왼쪽 정렬을 수행한다 즉 1부터 7 까지 정렬을 수행
         System.out.println("두 번째 재귀함수 호출"+"arr = "+arr+", "+"start = " + (hi + 1) + ", " + "end = " + end);
         System.out.println("");
         quickSort(arr, hi + 1, end);
+        //여기선 8을 기준으로 오른쪽 정렬을 수행한다 즉 9부터 10까지 정렬을 수행
+        //hi 는 정렬이 완료된 8의 인덱스
 
     }
 
