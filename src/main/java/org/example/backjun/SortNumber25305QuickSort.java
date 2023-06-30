@@ -12,8 +12,8 @@ public class SortNumber25305QuickSort {
         int every = Integer.parseInt(st.nextToken());
         int cut = Integer.parseInt(st.nextToken());
         int[] arr = new int[every];
-        st = new StringTokenizer(br.readLine());
         for(int i = 0; i < arr.length; i++){
+            st = new StringTokenizer(br.readLine());
             arr[i] = Integer.parseInt(st.nextToken());
         }
         SortNumber2587QuickSort sn = new SortNumber2587QuickSort();
