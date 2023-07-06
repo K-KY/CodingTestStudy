@@ -3,23 +3,118 @@ package org.example.doitBook;
 import java.util.Scanner;
 
 public class backJun1940 {
-    public static void main(String[] args) {
-        Scanner sc = new  Scanner(System.in);
-        int material = sc.nextInt();
-        int requestMat = sc.nextInt();
-        int count = 0;
-        int[] arr = new int[material];
-        for (int i = 0; i < material; i++) {
-            arr[i] = sc.nextInt();
+    static void swap(int[] arr, int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+
+    static void quickSort(int[] arr, int start, int end) {
+        if (start >= end) {
+            return;
         }
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i+1; j < arr.length; j++) {
-                if(arr[i] + arr[j] == requestMat) {
-                    count++;
-                }
+        // 기준값, 왼쪽에서 시작할 값, 오른쪽에서 시작할 값을 선언
+        int pivot = start;
+        int low = start + 1;
+        int high = end;
+        while (low <= high) {
+
+            while (low <= end && arr[pivot] >= arr[low]) {
+                low++;
+            }
+            while (high > start && arr[pivot] <= arr[high]) {
+                high--;
+            }
+            if (low > high) {//low 값이 high 값보다 커지면 high 와 pivot 을 교체한다
+                swap(arr, pivot, high);
+            }
+            if (low <= high) {
+                swap(arr, low, high);
             }
         }
+        quickSort(arr, high + 1, end);
+        quickSort(arr, start, high - 1);
+    }
+
+    public static void main(String[] args) {
+        //투포인터를 사용해서 풀어보기
+        //개념?
+        /*
+            줄의 갯수 N 이 주어지고
+            재료의 갯수가 N 만큼 무작위 배열로 주어졌다 1, 8, 7, 6, 3, 5, 4, 9, 2
+            순서대로 정렬을 한다
+            1, 2, 3, 4, 5, 6, 7, 8, 9
+            *                       *
+            포인터를 양 끝으로 잡는다
+            각각 start, end 를 변수명으로 하겠다
+            M 이 11이라고 가정을 한다
+            start 와 end 를 더해 M 과 비교를 한다 - > start + end < M
+            이 때 start + end 가 M 보다 작으므로 start 를 +1 해준다
+            1, 2, 3, 4, 5, 6, 7, 8, 9
+               *                    *
+            다시 비교한다 -> start + end = M
+            start + end 와 M 이 같으므로 start+1, end-1 을 한다
+            1, 2, 3, 4, 5, 6, 7, 8, 9
+                  *              *
+            같은 과정을 반복한다.
+
+            결과적으로 (2, 9) (3, 8) (4, 7) (5, 6) 이 M 과 같아 결과는 4 가 된다
+         */
+        Scanner sc = new Scanner(System.in);
+        //모든 재료의 갯수
+        int N = sc.nextInt();
+        //필요한 재료의 합
+        int M = sc.nextInt();
+        int[] arr = new int[N];
+        for(int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+        }
+/*
+        Arrays.fill(arr, sc.nextInt());
+        //이거는 arr 의 길이만큼 실행하는게 맞긴 한데
+        // 안에 있는 메소드는 한번만 실행됨 같은 글자로 여러번 실행하는 거임
+*/
+        quickSort(arr, 0, arr.length - 1);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+        int start = 0;
+        int end = arr.length - 1;
+        int count = 0;
+        while (start < end) {
+            int sum = arr[start] + arr[end];
+            if (sum < M) {
+                start++;
+            }
+            if (sum == M) {
+                start++;
+                end--;
+                count++;
+            }
+            if (sum > M) {
+                end--;
+            }
+
+        }
         System.out.println("count = " + count);
+
+
+//        Scanner sc = new  Scanner(System.in);
+//        int material = sc.nextInt();
+//        int requestMat = sc.nextInt();
+//        int count = 0;
+//        int[] arr = new int[material];
+//        for (int i = 0; i < material; i++) {
+//            arr[i] = sc.nextInt();
+//        }
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = i+1; j < arr.length; j++) {
+//                if(arr[i] + arr[j] == requestMat) {
+//                    count++;
+//                }
+//            }
+//        }
+//        System.out.println("count = " + count);
     }
 }
 /*
