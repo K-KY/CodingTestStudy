@@ -19,32 +19,32 @@ public class QuickSort {
         }
         // 가장 왼쪽의 값을 pivot으로 지정, 실제 비교 검사는 start+1 부터 시작
         int pivot = start;
-        int lo = start + 1;
-        int hi = end;
+        int low = start + 1;
+        int high = end;
 
         // lo는 현재 부분배열의 왼쪽, hi는 오른쪽을 의미
         // 서로 엇갈리게 될 경우 while문 종료
-        while (lo <= hi) {
+        while (low <= high) {
             //시작점 에서부터 끝나는 지점 까지
-            while (lo <= end && arr[lo] <= arr[pivot]) { // 피벗보다 큰 값을 만날 때까지
-                lo++;
-                System.out.println("low = "+lo+", "+"end = "+end);
+            while (low <= end && arr[low] <= arr[pivot]) { // 피벗보다 큰 값을 만날 때까지
+                low++;
+                System.out.println("low = "+low+", "+"end = "+end);
 
             }
             //끝나는 지점 부터 시작점 까지
-            while (hi > start && arr[hi] >= arr[pivot]) { // 피벗보다 작은 값을 만날 때까지
-                hi--;
+            while (high > start && arr[high] >= arr[pivot]) { // 피벗보다 작은 값을 만날 때까지
+                high--;
             }
-            if (lo > hi){// 엇갈리면 피벗과 교체 : 왼 쪽에선 피벗보다 큰 값을 오른쪽에선 작은 값을 찾는데
-                swap(arr, hi, pivot);
+            if (low > high){// 엇갈리면 피벗과 교체 : 왼 쪽에선 피벗보다 큰 값을 오른쪽에선 작은 값을 찾는데
+                swap(arr, high, pivot);
                 for(int i = 0; i < arr.length; i++){
                     System.out.print(arr[i] + ", ");
 
                 }
                 System.out.println("");
             }
-            else{// 엇갈리지 않으면 lo, hi 값 교체
-                swap(arr, lo, hi);
+            else{// 엇갈리지 않으면 low, high 값 교체
+                swap(arr, low, high);
                 for(int i = 0; i < arr.length; i++){
                     System.out.print(arr[i]+ ", ");
                 }
@@ -55,16 +55,16 @@ public class QuickSort {
         // 엇갈렸을 경우,
         // 피벗값과 hi값을 교체한 후 해당 피벗을 기준으로 앞 뒤로 배열을 분할하여 정렬 진행
         //여기서부터가 이해가 안됨 -> 여기서만 보면 무한히 호출 되는것 같지만 범위가 점점 줄어들면서 결국 전부다 호출 됨
-        System.out.println("첫 번째 재귀함수 호출"+"arr = "+ arr+", "+"start = " + start + ", " + "end = " + (hi-1));
+        System.out.println("첫 번째 재귀함수 호출"+"arr = "+ arr+", "+"start = " + start + ", " + "end = " + (high-1));
         System.out.println("");
-        quickSort(arr, start, hi - 1);
+        quickSort(arr, start, high - 1);
         // 1 2 4 5 3 6 7 "8" 9 10 예를 들어 8이 정렬이 완료 되었다고 했을 때 8을 기준으로 두 집합으로 분할된다
         //여기선 8 을 기준으로 왼쪽 정렬을 수행한다 즉 1부터 7 까지 정렬을 수행
-        System.out.println("두 번째 재귀함수 호출"+"arr = "+arr+", "+"start = " + (hi + 1) + ", " + "end = " + end);
+        System.out.println("두 번째 재귀함수 호출"+"arr = "+arr+", "+"start = " + (high + 1) + ", " + "end = " + end);
         System.out.println("");
-        quickSort(arr, hi + 1, end);
+        quickSort(arr, high + 1, end);
         //여기선 8을 기준으로 오른쪽 정렬을 수행한다 즉 9부터 10까지 정렬을 수행
-        //hi 는 정렬이 완료된 8의 인덱스
+        //high 는 정렬이 완료된 8의 인덱스
 
     }
 
