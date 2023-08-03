@@ -3,7 +3,7 @@ package org.example.programmers;
 public class NumberAndStringVoca {
     public static void main(String[] args) {
         NumberAndStringVocaSolution s = new NumberAndStringVocaSolution();
-        System.out.println(s.solution("zeroone"));
+        System.out.println(s.solution("twozerotwo"));
     }
 }
 
