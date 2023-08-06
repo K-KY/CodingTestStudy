@@ -4,6 +4,54 @@ package org.example;
 import java.io.*;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+/*public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+
+        StringBuilder sb = new StringBuilder();
+        String str = "";
+        for (int i = 1; i <= num; i++) {
+            sb = new StringBuilder();
+            for (int j = 0; j <= num; j++) {
+                if (num - j > i) {
+                    sb.append(" ");
+                }
+            }
+            int n = 2 * i - 1;
+            for (int j = 1; j <= n; j++) {
+                sb.append("*");
+            }
+            sb.append("\n");
+            sb.append(str);
+            str = sb.toString();
+        }
+        System.out.println(sb);
+    }
+}*/
+/*
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+
+        for (int i = 1; i <= num; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j <= num; j++) {
+                if (num - j > i) {
+                    sb.append(" ");
+                }
+            }
+            int n = 2 * i - 1;
+            for (int j = 1; j <= n; j++) {
+                sb.append("*");
+            }
+            System.out.println(sb);
+        }
+    }
+}
+*/
+/*
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -21,6 +69,7 @@ public class Main {
         }
     }
 }
+*/
 /*
 public class Main{
     public static void main(String[] args) {
