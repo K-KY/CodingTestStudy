@@ -20,10 +20,6 @@ class NumberAndStringVocaSolution {
         }
 
 
-        StringBuffer sb = new StringBuffer();
-        sb = sb.append(numStr[1]);
-        List<Integer> lst = new ArrayList<>();
-        Collections.sort(lst);
 
         answer = Integer.parseInt(s);
         return answer;
