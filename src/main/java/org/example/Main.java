@@ -3,8 +3,51 @@ package org.example;
 
 import java.io.*;
 import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<String, Integer> hash = new HashMap<>();
+        int sum = 1;
+        String sumStr = "";
+        for (int i = 0; i < 3; i++) {
+            sum = sc.nextInt() * sum;
+        }
 
-public class Main {
+        sumStr = sum + "";
+
+        for (int i = 0; i < sumStr.length(); i++) {
+            String str = sumStr.charAt(i) + "";
+
+            hash.put(str, hash.getOrDefault(str, 0) + 1);
+        }
+
+        for (int i = 0; i <= 9; i++) {
+            String key = String.valueOf(i);
+            System.out.println(hash.getOrDefault(key, 0));
+        }
+
+    }
+}
+/*public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new  Scanner(System.in);
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            list.add(sc.nextInt());
+        }
+        int max = Collections.max(list);
+        int index = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == max) {
+                index = i + 1;
+            }
+        }
+
+        System.out.println(max);
+        System.out.println(index);
+    }
+}*/
+/*public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -31,7 +74,7 @@ public class Main {
         }
         System.out.println(str);
     }
-}
+}*/
 
 /*public class Main{
     public static void main(String[] args) {
