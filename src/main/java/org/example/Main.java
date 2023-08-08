@@ -3,7 +3,115 @@ package org.example;
 
 import java.io.*;
 import java.util.*;
+
+/*
+//12 점 맞음
 public class Main{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int member = Integer.parseInt(st.nextToken());
+        int limit = Integer.parseInt(st.nextToken());
+        int score = 0;
+        HashMap<String, Integer> hash = new HashMap<>();
+
+        for (int i = 0; i < member; i++) {
+            st = new StringTokenizer(br.readLine());
+            int gender = Integer.parseInt(st.nextToken());
+            int grade = Integer.parseInt(st.nextToken());
+            String room = "";
+            if (gender == 1) {
+                room += "B" + grade + score;
+                if (hash.getOrDefault(room, 0) == limit) {
+                    score++;
+                    room = "B" + grade + score;
+                }
+            }
+            if (gender == 0) {
+                room += "G" + grade + score;
+                if (hash.getOrDefault(room, 0) == limit) {
+                    score++;
+                    room = "G" + grade + score;
+                }
+            }
+            hash.put(room, hash.getOrDefault(room, 0) + 1);
+
+
+
+
+        }
+        System.out.println("hash = " + hash.size());
+        System.out.println("hash = " + hash);
+        System.out.println("score = " + score);
+    }
+}
+*/
+/*
+public class Main{
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int num = Integer.parseInt(br.readLine());
+        int score = 0;
+        List<Integer> list = new ArrayList<>();
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < num; i++) {
+            list.add(Integer.parseInt(st.nextToken()));
+        }
+        int obj = Integer.parseInt(br.readLine());
+        Collections.sort(list);
+        int start = 0;
+        int end = list.size() - 1;
+            while (start < end) {
+                //두 수가 obj 와 같으면 start 와 end 를 한칸 앞으로 옮긴다 end 는 -1
+                if (list.get(start) + list.get(end) == obj) {
+                    score++;
+                    start++;
+                    end--;
+                }
+                //더 크면 end -1
+                //list 가 오름차 순으로 정렬 되어있기 때문에 list[i] + list[j] 가 obj 보다 크다면 list[i + 1] + list[j] 도 obj 보다 큼
+                if (list.get(start) + list.get(end) < obj) {
+                    end--;
+                }
+                if (list.get(start) + list.get(end) > obj) {
+                    start++;
+                }
+            }
+
+        System.out.println("start = " + score);
+    }
+}
+*/
+/*public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<String, Float> hash = new HashMap<>();
+        float max = 0;
+        String roomNum = String.valueOf(sc.nextInt());
+
+        for (int i = 0; i < roomNum.length(); i++) {
+            String str = roomNum.charAt(i) + "";
+            if (str.equals("9")) {
+                str = "6";
+            }
+            if (str.equals("6")) {
+                hash.put(str, hash.getOrDefault(str, 0f) + 0.5f);
+
+            }
+            if (!str.equals("6")) {
+                hash.put(str, hash.getOrDefault(str, 0f) + 1);
+            }
+            if (hash.get(str) > max) {
+                max = hash.get(str);
+            }
+        }
+
+        System.out.println((int)Math.ceil(max));
+
+    }
+}*/
+/*public class Main{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         HashMap<String, Integer> hash = new HashMap<>();
@@ -27,7 +135,7 @@ public class Main{
         }
 
     }
-}
+}*/
 /*public class Main{
     public static void main(String[] args) {
         Scanner sc = new  Scanner(System.in);
