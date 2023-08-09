@@ -4,8 +4,86 @@ package org.example;
 import java.io.*;
 import java.util.*;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String strF = sortStr(sc.nextLine());
+        String strS = sortStr(sc.nextLine());
+        int score = 0;
+        StringBuilder sb = new StringBuilder();
+        System.out.println("strF = " + strF);
+        System.out.println("strS = " + strS);
+
+        for (int i = 0; i < strF.length(); i++) {
+            if (strS.contains(strF.charAt(i)+"")) {
+                sb.append(strF.charAt(i));
+                strS = strS.replaceFirst(strF.charAt(i)+"", "-");
+                strF = strF.replaceFirst(strF.charAt(i) + "", "-");
+                System.out.println("sb = " + sb);
+            }
+        }
+
+        score = strF.length() + strS.length() - sb.length() * 2;
+
+
+        System.out.println("score = " + score);
+
+        System.out.println("strF = " + strF);
+        System.out.println("strS = " + strS);
+    }
+
+    private static String sortStr(String str) {
+        char[] c = str.toCharArray();
+        Arrays.sort(c);
+        str = new String(c);
+        return str;
+    }
+}
 /*
+public class Main{
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int cycle = Integer.parseInt(br.readLine());
+        ArrayList<String> answer = new ArrayList<>();
+        for (int i = 0; i < cycle; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String before = st.nextToken();
+            String after = st.nextToken();
+            if (before.length() != after.length()) {
+                answer.add("Impossible");
+                continue;
+            }
+            for (int j = 0; j < before.length(); j++) {
+                if(!check(before.charAt(j) + "", after)) {
+                    answer.add("Impossible");
+                    break;
+                }
+                after = after.replaceFirst(before.charAt(j)+"", "");
+                if (j == before.length() -1) {
+                    answer.add("Possible");
+                }
+            }
+
+        }
+
+        for (int i = 0; i < answer.size(); i++) {
+            System.out.println(answer.get(i));
+        }
+    }
+
+    static boolean check(String a, String b) {
+        if (b.contains(a)) {
+            System.out.println("a = " + a);
+            System.out.println("b = " + b);
+            return true;
+        }
+        return false;
+    }
+}
+*/
+
 //12 점 맞음
+/*
 public class Main{
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
