@@ -16,7 +16,9 @@ import java.util.Scanner;
 출력
 첫 줄에 알파벳만 뒤집힌 문자열을 출력합니다.
 
-
+***************
+강의 보니까 이거 투포인터 문제였던거 같음
+투포인터로 다시 풀어보셈
 */
 public class e특정문자뒤집기 {
     public static void main(String[] args) {
