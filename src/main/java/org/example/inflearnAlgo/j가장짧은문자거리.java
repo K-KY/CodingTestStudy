@@ -37,6 +37,10 @@ public class j가장짧은문자거리 {
            }
            if (!String.valueOf(str.charAt(i)).equals(find)) {
                index++;
+               if (str.indexOf(find) - i > 0) {
+                   result += str.indexOf(find) - i + " ";
+                   continue;
+               }
                result += index + " ";
            }
         }
