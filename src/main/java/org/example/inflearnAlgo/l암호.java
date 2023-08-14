@@ -50,6 +50,9 @@ import java.util.Scanner;
 
 # = 1로
 * = 0으로 바꾼다
+끝에 입력된 공백이 에러를 유발하므로 같이 제거
+Math.pow 로 2진수를 계산하고 7번쨰 수까지 합해서 char 로 변환후 스트링빌더에 넣는다
+거꾸로 입력 되므로 reverse 메소드를 사용해 뒤집는다.
 
 */
 public class l암호 {
