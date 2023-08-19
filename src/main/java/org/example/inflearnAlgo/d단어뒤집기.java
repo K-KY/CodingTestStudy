@@ -15,7 +15,7 @@ N개의 단어가 주어지면 각 단어를 뒤집어 출력하는 프로그램
 출력
 N개의 단어를 입력된 순서대로 한 줄에 하나씩 뒤집어서 출력합니다.
 
-
+stringBuilder 에 추가해서 .reverse() 로도 답이 나온다
 */
 public class d단어뒤집기 {
     public static void main(String[] args) {
