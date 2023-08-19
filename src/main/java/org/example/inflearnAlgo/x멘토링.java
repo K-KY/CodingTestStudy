@@ -77,7 +77,7 @@ public class x멘토링 {
                     System.out.println("i = " + i);
                     System.out.println("(i / stds) * stds + j = " + ((i / stds) * stds + j));
                     System.out.println(scores.get((i / stds) * stds + j));
-
+                    System.out.println("scores.get(i) = " + scores.get(i));
                     score[scores.get(i / stds * stds + j) - 1] = 1;
                     hash.put(scores.get(i), score);
                 }
@@ -85,8 +85,12 @@ public class x멘토링 {
             }
         }
         System.out.println("hash = " + hash);
-        for (int i = 1; i <= hash.size(); i++) {
+        for (int i = 1; i <= hash.size(); i++) {//여기서 hash.size() 로 했더니 반례가 나왔음
+            //가설 1 7 이 한 번도 앞질로 진 적이 없어서 hash 에 들어가질 않음 - > 기본으로 new int[stds] 를 가져오기 떄문에 7이 안 들어가있어도 0으로 채워진 배열이 나옴
+            //가설 2 hash.size() 가 7이 hash에 안들어가서 19이기 때문에 1 ~ 19 만 카운트 하고 20은 카운팅 안됨 -> 이게 맞음 오답 = 174, 20을 카운팅했을 때 + 16으로 190 정답이 나옴
+            //다른건 왜 정답인가? -> 다른건 앞질러진 번호가 있기때문에 hash에 들어감 그래서 hash.size() == stds 가 성립 근데 두번째 케이스에선 7 hash에 들어가지 않기 때문에 오답이 나옴
             System.out.println("i = " + i);
+            System.out.println("hash.size() = " + hash.size());
             for (int j = 0; j <stds; j++) {
                 System.out.println("hash.get(i)[j] = " + hash.getOrDefault(i, new int[stds])[j]);
                 if (i != j + 1 && hash.getOrDefault(i, new int[stds])[j] == 0) {
