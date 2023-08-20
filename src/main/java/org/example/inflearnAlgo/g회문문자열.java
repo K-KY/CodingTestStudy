@@ -22,8 +22,13 @@ import java.util.Scanner;
 public class g회문문자열 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        
         String str = sc.nextLine();
+        //이게 더 간편한듯
+/*
+        StringBuilder sb = new StringBuilder(str);
+        System.out.println("sb.reverse() = " + sb.reverse());
+*/
          boolean b = flip(str.toLowerCase());
          if (b) {
              System.out.println("YES");

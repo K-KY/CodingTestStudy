@@ -28,10 +28,12 @@ public class i필요한숫자만추출 {
         for (int i = 0; i < str.length(); i++) {
             String target = str.charAt(i) + "";
 
+            //0 ~ 9 의 숫자라면 스트링빌더에 추가한다
             if (target.matches("[0-9]")) {
                 sb.append(target);
             }
         }
+        //굳이 인티저로 파싱 안하고 스트링빌더 출력해도 상관 없었음
         num = Integer.parseInt(sb.toString());
         System.out.println("num = " + num);
     }

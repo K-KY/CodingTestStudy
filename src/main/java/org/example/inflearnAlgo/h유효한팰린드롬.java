@@ -32,15 +32,24 @@ public class h유효한팰린드롬 {
         String compare = "";
         String str = sc.nextLine();
         str = str.toLowerCase();
+//대소문자를 구분하지 않음으로 전부 소문자로 바꾼다
 
+        //알파벳을 제외한 문자는 무시 -> 알파벳을 제외한 문자 삭제
         for (int i = 0; i < str.length(); i++) {
             String target = str.charAt(i) + "";
+            //0-9 를 왜 했는지 모르겠는데 알파벳 외 문자는 무시하기 때문에 0-9 가 없어도 됨
+            //운좋게 통과함
+            //a ~ z 0 ~ 9 외 문자를 공백으로 바꾼다
+            //공백으로 바꾸는 이유는 str 의 길이가 달라져서 인덱스가 바뀌기 때문에 그걸 방지하기 위해 공백으로 바꿈
             if (!target.matches("[a-z0-9]")) {
                 str = str.replace(target, " ");
             }
         }
+        //공백을 전부 삭제
         str = str.replace(" ", "");
+        //문자열을 뒤집는다
         compare = flip(str);
+        //뒤집은 문자열과 원래 문자열이 같은지 확인한다
         if (compare.equals(str)) {
             System.out.println("YES");
         }

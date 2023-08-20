@@ -26,10 +26,14 @@ public class q소수 {
         int answer = 0;
         int[] arr = new int[num + 1];
 
+
         for (int i = 2; i <= num; i++) {
+            //소수인 2부터 시작해서 answer 를 1 늘리고 소수가 아닌 2의 배수를 전부 1로 바꾼다
+            //3도 마찬가지
             if (arr[i] == 0) {
                 answer++;
-
+                //i 가 3이라면 j 는 3만큼 늘어나며 3 6 9 12 로 3의 배수를 전부 1로 바꾼다
+                //3 도 1로 바꾸지만 소수 일 때는 answer 를 +1 함
                 for (int j = i; j <= num; j+=i) {
                     arr[j] = 1;
                 }
