@@ -1,6 +1,8 @@
 package org.example.inflearnAlgo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /*설명
@@ -44,13 +46,16 @@ public class y두배열합치기 {
         for (int i = 0; i < length; i++) {
             sb.append(sc.next()).append(" ");
         }
-
         String[] arr = sb.toString().split(" ");
-        Arrays.sort(arr);
-        sb.delete(0 , sb.length());
+        ArrayList<Integer> arrayList = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
+            arrayList.add(Integer.parseInt(arr[i]));
+        }
+        sb.delete(0 , sb.length());
+        Collections.sort(arrayList);
+        for (int i = 0; i < arrayList.size(); i++) {
             System.out.println("arr[i] = " + arr[i]);
-            sb.append(arr[i]).append(" ");
+            sb.append(arrayList.get(i)).append(" ");
         }
         System.out.println(sb);
 
