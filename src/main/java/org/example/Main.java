@@ -2,9 +2,128 @@ package org.example;
 
 
 import java.io.*;
+import java.nio.MappedByteBuffer;
 import java.util.*;
+public class Main{
+    public static void main(String[] agrs) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String initial = br.readLine() + "#";
+        int movement = Integer.parseInt(br.readLine());
 
-public class Main {
+        for (int i = 0; i < movement; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String command = st.nextToken();
+            String apnd = "";
+            if(command.equals("P")) {
+                apnd = st.nextToken();
+                initial = commandExecute(initial, command, apnd);
+                continue;
+            }
+            initial = commandExecute(initial, command);
+        }
+        initial = initial.replace("#", "");
+        System.out.println(initial);
+    }
+    static String commandExecute(String initial, String command) {
+        int cursor = initial.indexOf("#");
+
+        // Replace char array with HashMap
+        HashMap<Integer, Character> map = new HashMap<>();
+        for (int i = 0; i < initial.length(); i++) {
+            map.put(i, initial.charAt(i));
+        }
+        System.out.println("map = " + map);
+        if (command.equals("L") && cursor > 0) {
+            char temp = map.get(cursor);
+            map.put(cursor, map.get(cursor - 1));
+            map.put(cursor - 1, temp);
+            return getStringFromMap(map);
+        }
+
+        if (command.equals("D") && cursor < initial.length() - 1) {
+            char temp = map.get(cursor);
+            map.put(cursor, map.get(cursor + 1));
+            map.put(cursor + 1, temp);
+            return getStringFromMap(map);
+        }
+
+        if (command.equals("B") && cursor > 0) {
+            map.put(cursor - 1, '#');
+            map.remove(cursor);
+            if (map.get(cursor + 1) != null) {
+                map.put(cursor, map.get(cursor + 1));
+                map.remove(cursor + 1);
+            }
+            return getStringFromMap(map);
+        }
+
+        return initial;
+    }
+
+    // Helper method to get string from map
+    static String getStringFromMap(HashMap<Integer, Character> map) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < map.size(); i++) {
+            if (map.containsKey(i)) sb.append(map.get(i));
+        }
+        return sb.toString();
+    }
+
+    /*
+    static String commandExecute(String initial, String command) {
+        int cursor = initial.indexOf("#");
+        if (command.equals("L") && cursor > 0) {
+
+            char[] c = initial.toCharArray();
+            char temp = c[cursor];
+            c[cursor] = c[cursor - 1];
+            c[cursor - 1] = temp;
+            initial = new String(c);
+            return initial;
+        }
+
+        //asdf#, cursor index = 4 , initial.length = 5
+        if (command.equals("D") && cursor < initial.length() - 1) {
+            char[] c = initial.toCharArray();
+            char temp = c[cursor];
+            c[cursor] = c[cursor + 1];
+            c[cursor + 1] = temp;
+            initial = new String(c);
+            return initial;
+
+        }
+
+        if (command.equals("B") && cursor > 0) {
+            char[] c = initial.toCharArray();
+            c[cursor -1] = c[cursor];
+            initial = new String(c);
+            initial = initial.replaceFirst("#", "");
+            return initial;
+        }
+        return initial;
+    }
+*/
+    static String commandExecute(String initial, String command, String apnd) {
+        int cursor = initial.indexOf("#");
+        String[] sp = initial.split("#");
+        System.out.println("sp.length = " + sp.length);;
+
+        if (cursor == 0 && sp.length != 0) {
+            initial = apnd + "#" + sp[0];
+        }
+        if (cursor == initial.length() - 1 && sp.length != 0) {
+            initial = sp[0] + apnd + "#";
+        }
+
+        if (sp.length == 2) {
+            initial = sp[0] + apnd + "#" + sp[1];
+        }
+
+
+        return initial;
+    }
+}
+/*public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String strF = sortStr(sc.nextLine());
@@ -38,7 +157,7 @@ public class Main {
         str = new String(c);
         return str;
     }
-}
+}*/
 /*
 public class Main{
     public static void main(String[] args) throws IOException {

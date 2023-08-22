@@ -32,13 +32,17 @@ public class n보이는학생 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         ArrayList<Integer> arr = new ArrayList<>();
         int scope = 0;
+        //앞자리 학생보다 더 큰 학생이 나올 때마다 추가한다
         int tallStd = 0;
+        //키가 가장 큰 학생을 넣는다 0 부터 끝까지
 
         for (int i = 0; i < stdNum; i++) {
             arr.add(Integer.parseInt(st.nextToken()));
         }
+        //학생 배열
 
         for (int i = 0; i < arr.size(); i++) {
+            //i 번째 학생이 현재까지 나온 학생중 최대값보다 크다면 최대값을 바꾸고 scope++
             if (arr.get(i) > tallStd) {
                 tallStd = arr.get(i);
                 scope++;

@@ -59,26 +59,40 @@ public class l암호 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int cycle = Integer.parseInt(sc.nextLine());
-        String psw = sc.nextLine().replace("*", "0").replace("#", "1").replace(" ","");
+        //사용 안함
+        String psw = sc.nextLine().replace("*", "0").replace("#", "1").replace(" ", "");
+        //공백을 제거하는 이유 -> 첫번째 테스트 케이스의 끝부분에 공백으로 에러남
+        //공백이 들어가는건 정상적으로 되는데 아래 이진수 변환하는 과정에서 공백이 에러를 발생
+        //*은 0 으로 #은 1로 바꾼다
         ArrayList<String> arr = new ArrayList<>();
+        //0,1로 변경된 값이 들아갈 배열
         StringBuilder result = new StringBuilder();
+        //
         int cal = 0;
         int cnt = 0;
         for (int i = 0; i < psw.length(); i++) {
             arr.add(String.valueOf(psw.charAt(psw.length() - (i + 1))));
+            //어레이에 집어넣는데 뒤어서부터 계산하기 때문에 거꾸로 집어넣는다
         }
         System.out.println(arr);
         for (int i = 0; i < psw.length(); i++) {
             cal += Integer.parseInt(arr.get(i)) * Math.pow(2, cnt);
+            //2진수를 10진수로 변환 -> 0011001 = 각 자리수 별로 2의 0제곱부터 2의 length - 1 까지 계산 하면 0 + 0 + 4 + 8 + 0 + 0 + 64 = 76 = L
             cnt++;
+            //배열의 자릿수 i 번째 숫자 * 2의 cnt 제곱만큼 더한다
+
+            //문제에서 7자리로 구성되어있다 했으니 cnt = 7 -> 6번째 숫자까지 계산을 완료하면 스트링빌더에 추가하고 cnt 와 cal 을 초기화한다
             if (cnt == 7) {
                 char c = (char) cal;
+                //아스키코드인 cal 을 캐릭터로 캐스팅 한다
                 System.out.println(cal);
                 cal = 0;
                 cnt = 0;
                 result.append(c);
             }
         }
+        //거꾸로 계산했기 때문에 문자열도 거꾸로 생성됨
+        //그래서 문자열을 뒤집는다
         System.out.println(result.reverse());
 
 
