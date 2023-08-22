@@ -25,10 +25,12 @@ public class p피보나치수열 {
         int pip = 1;
 
         for (int i = 0; i < cycle; i++) {
+            //앞에 두 자리 이하로 있을땐 그대로 집어넣는다
             if (i < 2) {
                 arr[i] = pip;
                 System.out.println(arr[i]);
             }
+            //두자리 이상 있을 땐 i 를 제외한 앞의 두 자리를 더한다
             if (i >= 2 ) {
                 arr[i] = arr[i - 1] + arr[i - 2];
                 System.out.println(arr[i]);

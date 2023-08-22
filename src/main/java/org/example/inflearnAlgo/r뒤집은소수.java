@@ -32,18 +32,24 @@ public class r뒤집은소수 {
 
         int cycle = Integer.parseInt(sc.nextLine());
         StringTokenizer st = new StringTokenizer(flip(sc.nextLine()));
+        //스트링 토크나이저에 처음부터 뒤집은 상태로 집어넣는다
         ArrayList<Integer> arr = numList();
 
         String result = "";
         while (st.hasMoreTokens()) {
             int num = Integer.parseInt(st.nextToken());
             if  (arr.contains(num)) {
+                //리스트에 포함되어 있는지 확인하고 result 에 추가한다
+                //뒤집은  상태로 넣었으므로 원래 배열이 100 200 300 400  이라면 현재 배열은 004 003 002 001 이다
+                //그러니 새로 붙는게 앞으로 가도록 출력한다
                 result = num + " " + result;
             }
         }
         System.out.println(result);
 
     }
+
+    //여기서 소수를 찾고 그걸 리스트로 리턴한다
     static ArrayList<Integer> numList() {
         int[] num = new int[100000 + 1];
         ArrayList<Integer> arr = new ArrayList<>();

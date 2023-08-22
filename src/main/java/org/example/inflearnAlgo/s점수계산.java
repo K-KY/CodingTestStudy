@@ -38,15 +38,20 @@ public class s점수계산 {
         int length = Integer.parseInt(sc.nextLine());
         int score = 0;
         int stack = 0;
+        //누적 점수
         StringTokenizer scores = new StringTokenizer(sc.nextLine());
-
+        //스트링토크나이저로 하나씩 확인한다
         while (scores.hasMoreTokens()) {
             int s = Integer.parseInt(scores.nextToken());
+            //1이면 정답 2면 오답
             if (s == 1) {
                 stack++;
+                //정답이면 stack 를 1 추가하고
                 score += stack;
+                //score 에 stack 를 더한다
             }
             if (s == 0) {
+                //오답이면 점수 추가는 없고 stack 를 0 으로만든다
                 stack = 0;
             }
         }
