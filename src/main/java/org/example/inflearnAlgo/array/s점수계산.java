@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.array;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;

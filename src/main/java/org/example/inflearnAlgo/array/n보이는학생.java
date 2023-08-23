@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.array;
 
 import javax.print.attribute.standard.OrientationRequested;
 import java.io.BufferedReader;
