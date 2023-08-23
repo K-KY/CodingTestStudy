@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.string;
 
 import java.util.Arrays;
 import java.util.Scanner;
