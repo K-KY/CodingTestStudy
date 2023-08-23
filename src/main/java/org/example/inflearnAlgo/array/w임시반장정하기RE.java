@@ -68,8 +68,10 @@ public class w임시반장정하기RE {
         int stds = Integer.parseInt(sc.nextLine());
         ArrayList<Integer> arr = new ArrayList<>();
         HashMap<Integer, int[]> hash = new HashMap<>();
-        
+
+        //학생 수만큼 반복한다
         for (int i = 0; i < stds; i++) {
+            //1 ~ 5 까지 니까 5번 반복
             for (int j = 0; j < 5; j++) {
                 arr.add(Integer.parseInt(sc.next()));
             }
@@ -79,16 +81,27 @@ public class w임시반장정하기RE {
         //n 번 학생과 같은반이 된적이 있으면 1 없으면 0 으로 체크
         for (int i = 0; i < arr.size(); i++) {
             //세로로 같은 번호를 체크해야함 = i % 5
+
+            // i % 5 = 0 1 2 3 4 = 0 1 2 3 4, 5 6 7 8 9 = 0 1 2 3 4
+            // j+=5 = 0 5 10..., 1 6 11..., 2 7 12 ...
+            //i 가 몇이든 0 1 2 3 4
             for (int j = i % 5; j < arr.size(); j+=5) {
+
+                // 탐색 하면서 arr(i) == arr(j) 일 때
                 if (arr.get(i) == arr.get(j) && i != j) {
                     System.out.println("j = " + j);
                     System.out.println("i = " + i);
+                    //hash 에 들어있는건 학생의 번호 i = 0, j = 0, 5, 10... j/5 = 0 , 1 , 2
                     int [] result = hash.getOrDefault(j / 5, new int[stds]);
-                    result[i / 5] += 1;
+
+                    result[i / 5] += 1; // i = 0 1 2 3 4 일 때 0번째 5 6 7 8 9 일 때 1 에 넣는다
+
                     for (int k = 0; k < result.length; k++) {
                         System.out.println("result[k] = " + result[k]);
                     }
+
                     hash.put(j / 5, result);
+                    //j / 5 에서 꺼냈으니 다시 j / 5 에 넣는다
 
                 }
 
@@ -96,18 +109,24 @@ public class w임시반장정하기RE {
             System.out.println("hash = " + hash);
         }
         int result = 0;
+        //0이 가장 큰 값을 가진 key
         int max = 0;
+        //0 이 아닌 값의 수 중 가장 큰 값
+        //0이 아닌 수를 전부 센다
         for (int i = 0; i < stds; i++) {
             int[] a = hash.getOrDefault(i, new int[stds]);
+            //a 에 i 번 학생의 배열을 저장
             int nz = 0;
             System.out.println("i = " + i);
 
             for (int j = 0; j < stds; j++) {
+                //만약 0 이 아니면 nz++;
                 if (a[j] != 0) {
                     nz++;
                 }
                 System.out.println("a[j] = " + a[j]);
             }
+            //nz 가 max 보다 크면 nz = max
             if (nz > max) {
                 max = nz;
                 result = i;
