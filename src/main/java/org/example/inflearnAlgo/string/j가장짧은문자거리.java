@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.string;
 
 import java.io.BufferedReader;
 import java.io.IOException;
