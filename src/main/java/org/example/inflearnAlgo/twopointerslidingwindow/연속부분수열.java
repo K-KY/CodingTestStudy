@@ -1,4 +1,12 @@
 package org.example.inflearnAlgo.twopointerslidingwindow;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 /*설명
 N개의 수로 이루어진 수열이 주어집니다.
 
@@ -16,6 +24,10 @@ N개의 수로 이루어진 수열이 주어집니다.
 
 수열의 원소값은 1,000을 넘지 않는 자연수이다.
 
+8 6
+1 2 1 3 1 1 1 2
+
+
 
 출력
 첫째 줄에 경우의 수를 출력한다.
@@ -27,7 +39,33 @@ sum > m 이라면 start++
 
 */
 public class 연속부분수열 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int length = Integer.parseInt(st.nextToken());
+        int limit = Integer.parseInt(st.nextToken());
+        int sum = 0;
+        int start = 0;
+        int result = 0;
+        st = new StringTokenizer(br.readLine());
+        ArrayList<Integer> arr = new ArrayList<>();
 
+        while (st.hasMoreTokens()) {
+            arr.add(Integer.parseInt(st.nextToken()));
+        }
+        //수열 입력
+
+        for (int i = 0; i < arr.size(); i++) {
+            sum += arr.get(i);
+            while (sum > limit) {
+                sum -= arr.get(start);
+                start++;
+            }
+            if (sum == limit) {
+                result++;
+            }
+            System.out.println("sum = " + sum);
+        }
+        System.out.println("result = " + result);
     }
 }
