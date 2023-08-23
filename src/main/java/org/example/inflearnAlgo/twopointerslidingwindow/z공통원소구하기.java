@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.twopointerslidingwindow;
 
 import java.beans.Introspector;
 import java.io.BufferedReader;
