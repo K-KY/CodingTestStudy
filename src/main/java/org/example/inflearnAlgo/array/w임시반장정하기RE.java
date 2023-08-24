@@ -1,5 +1,6 @@
 package org.example.inflearnAlgo.array;
 
+import java.awt.color.ICC_ColorSpace;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -63,6 +64,87 @@ arr.size() 만큼 포문
 같은 숫자가 있다면 i / 5 에 + 1 -> 0 1 2 3 4 까지 5개 는 5로 나눴을 때 0, 5 6 7 8 9 는 5로 나눴을 때 1이다 소수점이 없어지기 떄문
 */
 public class w임시반장정하기RE {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<Integer, int[]> hash = new HashMap<>();
+        int stds = Integer.parseInt(sc.next());
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < stds; i++) {
+            for (int j = 0; j < 5; j++) {
+                arr.add(Integer.parseInt(sc.next()));
+            }
+        }
+        
+        for (int i = 0; i< arr.size(); i++) {
+            //j는 항상 0 1 2 3 4 
+            for (int j = i % 5; j < arr.size(); j+=5) {
+                if (arr.get(i) == arr.get(j) && i != j) {
+                    int[] log = hash.getOrDefault(j / 5, new int[stds]);
+                    log[i / 5] += 1;
+                    
+                    hash.put(j / 5, log);
+                }
+            }
+        }
+        int max = 0;
+        int result = 0;
+        for (int i = 0; i < stds; i++) {
+            int nz = 0;
+            int[] a = hash.getOrDefault(i, new int[stds]);
+            System.out.println("i = " + i);
+            for (int j = 0; j < a.length; j++) {
+                System.out.println("a[j] = " + a[j]);
+                if (a[j] != 0) {
+                    nz++;
+                }
+            }
+
+            if (max < nz) {
+                max = nz;
+                result = i;
+            }
+        }
+        System.out.println("(result+ 1) = " + (result+ 1));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int stds = Integer.parseInt(sc.nextLine());
@@ -134,4 +216,5 @@ public class w임시반장정하기RE {
         }
         System.out.println("result = " + result);
     }
+*/
 }
