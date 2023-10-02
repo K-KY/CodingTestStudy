@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.hash;
 
 import java.util.Comparator;
 import java.util.HashMap;
