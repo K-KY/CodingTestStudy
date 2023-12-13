@@ -47,7 +47,7 @@ public class 모든아나그램구하기 {
 
         while (sLit.size() >= tLit.size()) {
             answerMap.clear();
-            for (int i = 0; i < tLit.size(); i++) {
+            for (int i = 0; i < tLit.size(); i++) {//아무튼 슬라이딩 윈도우임
                 answerMap.put(sLit.get(i), answerMap.getOrDefault(sLit.get(i), 0) + 1);
             }
             sLit.remove(0);
