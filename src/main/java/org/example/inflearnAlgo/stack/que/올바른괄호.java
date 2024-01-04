@@ -1,4 +1,4 @@
-package org.example.inflearnAlgo;
+package org.example.inflearnAlgo.stack.que;
 
 import java.util.List;
 import java.util.Scanner;
